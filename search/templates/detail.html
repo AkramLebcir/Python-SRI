@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#2196F3">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <style>
+        body{
+            background: #efefef;
+        }
+        @media screen and (max-width: 1024px){
+        .mdl-layout__header-row{
+            padding: 0% 10% 0% 10% !important;
+        }
+        }
+        .mdl-layout__header-row{
+            padding: 0% 10% 0% 10% !important;
+        }
+    .demo-card-wide{
+                width: 80%;
+                margin-left: 10%;
+                margin-right: 10%;
+                margin-top: 25px;
+                margin-bottom: 30px;
+                padding: 40px;
+      }
+      
+     .md-card{
+            min-height: 0px !important;   
+     }
+
+     .mdl-progress{
+         width: 100%;
+     }
+
+     .error{
+         margin: 150px 37% 100px 38%;
+         opacity: 0.4;
+     }
+
+    </style>
+    <title>Google</title>
+</head>
+<body>
+        <div class="demo-layout-waterfall mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <!-- Top row, always visible -->
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title"><h3>Google</h3></span>
+                    <div class="mdl-layout-spacer"></div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                                mdl-textfield--floating-label mdl-textfield--align-right">
+                    </div>
+                </div>
+                <!-- Bottom row, not visible on scroll -->
+                <div class="mdl-layout__header-row">
+                    
+                </div>
+                  
+            </header>
+            <main class="mdl-layout__content">
+                <div id="p2" class="mdl-progress mdl-js-progress "></div>
+                <div class="page-content">
+                    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                        <h4>Document : </h4>
+                        <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                            {{ docum|lower}}</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+Django==1.11.7
+gunicorn==19.7.1
+mongoengine
+pymongo
+nltk
+django-progressive-web-app
+pypandoc==1.3.3

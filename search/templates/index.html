@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#2196F3">
+    {% load pwa %}
+    {% progressive_web_app_meta %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+     
+            function onchangestyle(){
+                document.getElementById('p2').className += ' mdl-progress__indeterminate';
+                var parametre = $("#sample1").val();
+              }
+
+    </script>
+    <style>
+        body{
+            background: #efefef;
+        }
+        @media screen and (max-width: 1024px){
+        .mdl-layout__header-row{
+            padding: 0% 10% 0% 10% !important;
+        }
+        }
+        .mdl-layout__header-row{
+            padding: 0% 10% 0% 10% !important;
+        }
+        .mdl-list__item--three-line .mdl-list__item-primary-content{
+            height: auto !important;
+        }
+        .search{
+            width: 90%;
+            margin-top: -11px;
+            margin-left: 5%;
+            margin-right: 5%;
+            min-height: 0px !important;
+            margin-left: 5%;
+            margin-right: 5%;
+            opacity: 0.7;
+            transition: opacity .5s ease-out;
+            -moz-transition: opacity .5s ease-out;
+            -webkit-transition: opacity .5s ease-out;
+            -o-transition: opacity .5s ease-out;
+        }
+        .search:hover{
+            width: 90%;
+            margin-top: -11px;
+            margin-left: 5%;
+            margin-right: 5%;
+            min-height: 0px !important;
+            margin-left: 5%;
+            margin-right: 5%;
+            opacity: 1;
+        }
+    .demo-card-wide{
+                width: 90%;
+                margin-left: 5%;
+                margin-right: 5%;
+                margin-top: 15px;
+                padding-bottom: 13px;
+      }
+      
+    .demo-list-three {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 5px;
+        padding-bottom: 5px;
+      }
+      .mdl-list__item-primary-content{
+          margin: 10px;
+      }
+     .mdl-textfield__input,.mdl-textfield__label{
+         width: 80%;
+         margin-top: -5px;
+         height: 50px;
+         margin-left: 3%;
+         margin-right: 5%;
+         color: #000;
+     }
+     .mdl-textfield__label{
+         top: 20px !important;
+     }
+     .mdl-textfield{
+        
+         width: 100% !important;
+         padding: 0px !important;
+     }
+     .md-card{
+            min-height: 0px !important;
+            
+     }
+     .mdl-button{
+         bottom: 10px !important;
+         right: 3% !important;
+     }
+     .mdl-progress{
+         width: 100%;
+     }
+     form{
+         height: 60px !important;
+     }
+     .error{
+         opacity: 0.6;
+     }
+     img{
+         width: 70%;
+         height: 70%;
+         margin-left: 17%;
+         margin-top: 2%;
+     }
+     .mdl-chip{
+         margin-left: 20px;
+     }
+    </style>
+    <title>Google</title>
+</head>
+<body>
+        <div class="demo-layout-waterfall mdl-layout mdl-js-layout mdl-layout--fixed-header">
+                <header class="mdl-layout__header">
+                  <!-- Top row, always visible -->
+                  <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title"><h3>Google</h3></span>
+                    <div class="mdl-layout-spacer"></div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                                mdl-textfield--floating-label mdl-textfield--align-right">
+                    </div>
+                  </div>
+                  <!-- Bottom row, not visible on scroll -->
+                  <div class="mdl-layout__header-row">
+                    <div class="search mdl-card mdl-shadow--2dp">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <form method="POST" action=".">
+                            {% csrf_token %}
+                            <input class="mdl-textfield__input" type="text" id="sample1" name="rq">
+                            <label class="mdl-textfield__label" for="sample1">Search  . . . </label>
+                            <!-- Colored raised button -->
+                            <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+                                    onclick="onchangestyle()"
+                                    type="submit" value="Search">
+                            </form>
+                        </div>
+
+                    </div>
+                  </div>
+                  
+                </header>
+                <main class="mdl-layout__content">
+                <div id="p2" class="mdl-progress mdl-js-progress "></div>
+                  <div class="page-content">
+                            
+                    {% if filinverses %}
+                      <!-- Your content goes here -->
+                      <ul class="demo-list-three mdl-list">
+
+                            {% for indedb in indexdb %}
+                                <span class="mdl-chip">
+                                    <span class="mdl-chip__text">{{indedb.nomMot}}</span>
+                                </span>
+                            {% endfor %}
+
+                            {% for i,doc in filinverses %}
+                            
+                                <li class="mdl-list__item mdl-list__item--three-line demo-card-wide mdl-card mdl-shadow--2dp">
+                                <span class="mdl-list__item-primary-content">
+                                    
+                                    <a href="{% url 'detail' docum=i %}">
+                                        <i class="material-icons md-48 mdl-list__item-icon">folder</i>
+                                        <span>Document {{forloop.counter}} :</span>
+                                    </a>
+                                    <span class="mdl-list__item-text-body">
+                                            {{doc|truncatewords:40|lower}}
+                                    </span>
+                                </span>
+                                <span class="mdl-list__item-secondary-content">
+                                    <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+                                </span>
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+
+                        {% if chartdata %}
+                            <script type="text/javascript">
+                                    google.charts.load('current', {packages: ['corechart', 'bar']});
+                                    google.charts.setOnLoadCallback(drawBasic);
+                                    
+                                    function drawBasic() {
+                                        var datachartjs = {{ chartdata }} ;
+                                        
+                                        console.log(datachartjs);
+                                        console.log(typeof datachartjs);
+                                          var data = new google.visualization.DataTable();
+                                          data.addColumn('number', 'Index documents');
+                                          data.addColumn('number', 'Score');
+                                    
+                                          data.addRows(datachartjs);
+                                    
+                                          var options = {
+                                            title: 'Score of documents',
+                                            hAxis: {
+                                              title: 'Index documents',
+                                              format: ''
+                                            },
+                                            vAxis: {
+                                              title: 'Score'
+                                            },
+                                            bar: {
+                                                groupWidth: 10
+                                            }
+                                          };
+                                    
+                                          var chart = new google.visualization.ColumnChart(
+                                            document.getElementById('chart_div'));
+                                    
+                                          chart.draw(data, options);
+                                        }
+                            </script>
+                            <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="chart_div" style="height:400px;"></div>
+                            {% endif %}
+                            {% else %}
+
+                                <div class="error">
+                                    <img src="https://i.giphy.com/media/14qxBwmRVhieFW/source.gif">
+                                </div>
+                                
+                            {% endif %}
+                </div>
+                </main>
+              </div>
+              
+</body>
+</html>
